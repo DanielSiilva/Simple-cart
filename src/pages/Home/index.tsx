@@ -1,5 +1,14 @@
 
-import {Wrapper} from "./styled"
+import {
+    Wrapper,
+    CardContainer,
+    Product,
+    Cart
+
+} from "./styled"
+
+import {Pizzas} from '../../data/data'
+
 
 
 
@@ -7,9 +16,40 @@ import {Wrapper} from "./styled"
 
 export function Home (){
     
+
+
+
+
+
+
+
+
+
+
+
+    
     return(
         <Wrapper>
-            <h1>Home</h1>
+             
+            <CardContainer>
+                {Pizzas.map((item) =>{
+                    return(
+                        <Product key={item.id}>
+                            
+                            <p>{item.title}</p>
+                            <img  src={item.image}/>
+                            <p>{item.price}</p>
+
+                            <button>Adcionar</button>
+                        </Product>
+                    )
+                })}
+            </CardContainer>
+            
+            <Cart>
+                <h1>Seu Carrinho</h1>
+                
+            </Cart>
         </Wrapper>
     )
 }
