@@ -103,15 +103,31 @@ export function Home (){
         <Wrapper>
              
             <CardContainer>
-                {Pizzas.map((item) =>{
+                {Pizzas.map((pizza) =>{
                     return(
-                        <Product key={item.id}>
+                        <Product key={pizza.id}>
                             
-                            <p>{item.title}</p>
-                            <img  src={item.image}/>
-                            <p>{item.price}</p>
+                            <p>{pizza.title}</p>
+                            <img  src={pizza.image}/>
+                            <p>{pizza.price}</p>
 
-                            <button onClick={()=>handleAddToCart(item.id)}>Adcionar</button>
+                            <h3>
+                                 {shoppingCart.find((item) => pizza.id === item.product.id)?.quantity
+                                ? shoppingCart.find((item) => pizza.id === item.product.id)?.quantity
+                                : 0}
+                            </h3>
+
+                            <button 
+                                onClick={()=>handleAddToCart(pizza.id)}
+                            >
+                                +
+                            </button>
+
+                            <button 
+                                onClick={()=>handleRemoveFromCart(pizza.id)}
+                            >
+                                -
+                            </button>
                         </Product>
                     )
                 })}
