@@ -196,3 +196,16 @@ export const ProductCart = styled.div`
 
 
 `
+
+export const EmptyCart = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    h3{
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+`

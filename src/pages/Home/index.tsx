@@ -1,4 +1,4 @@
-import {ArrowFatLinesDown, ArrowFatLinesUp, Minus, Plus} from 'phosphor-react'
+import {ArrowFatLinesDown, ArrowFatLinesUp,  ShoppingCart} from 'phosphor-react'
 
 
 import {
@@ -9,7 +9,8 @@ import {
     ProductCart,
     Title,
     Info,
-    Quantity
+    Quantity,
+    EmptyCart
 
 } from "./styled"
 
@@ -159,7 +160,7 @@ export function Home (){
                 <div>
                     <h1>Itens no carrinho</h1>
                 </div>
-                
+
                 {shoppingCart.length > 0 ? 
                 
                     shoppingCart.map((item)=>{
@@ -192,7 +193,15 @@ export function Home (){
                     
                     :
                     
-                    <p> Carrinho vazio</p>
+                    <EmptyCart>
+                        <ShoppingCart 
+                            size={50}
+                            weight='fill'
+                            color='black'
+                        />
+
+                        <h3> Está vazio</h3>
+                    </EmptyCart>
                 }
 
                 <h1>Preço total: {totalCart.toFixed(2)}</h1>
