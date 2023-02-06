@@ -16,14 +16,14 @@ export const Wrapper =styled.div`
 
 
 
-    border: 2px solid red;
+  
 
 `
 
 
 
 export const CardContainer = styled.div`
-    border: 1px solid black;
+    
     
     display: flex;
     justify-content: center;
@@ -43,6 +43,31 @@ export const Product = styled.div`
     align-items: center;
     gap: 0.5rem;
 
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+
+        background-color: ${(props) => props.theme['base-button']};
+
+        svg{
+            background-color: ${(props) => props.theme['base-button']};
+            color: ${(props) => props.theme['purple']};
+            padding: 2px;
+
+            cursor: pointer;
+        }
+    }
+
+
+`
+
+export const Title = styled.p`
+    font-weight: bold;
+    color: red;
+
+    text-transform: uppercase;
 
 `
 
@@ -51,9 +76,42 @@ export const Cart = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 
     width: 40%;
-    height: 40%;
+    height: auto;
 
-    border: 1px solid black;
+    
+`
+
+export const ProductCart = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    
+
+    img{
+        height: 40px;
+        width: 40px;
+    }
+
+
+    div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+
+        background-color: ${(props) => props.theme['base-button']};
+
+        svg{
+            background-color: ${(props) => props.theme['base-button']};
+            color: ${(props) => props.theme['purple']};
+            padding: 2px;
+
+            cursor: pointer;
+        }
+    }
+
+
 `

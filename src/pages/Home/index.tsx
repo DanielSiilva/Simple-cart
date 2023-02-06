@@ -1,9 +1,13 @@
+import {Minus, Plus} from 'phosphor-react'
+
 
 import {
     Wrapper,
     CardContainer,
     Product,
-    Cart
+    Cart,
+    ProductCart,
+    Title
 
 } from "./styled"
 
@@ -107,27 +111,32 @@ export function Home (){
                     return(
                         <Product key={pizza.id}>
                             
-                            <p>{pizza.title}</p>
+                            <Title>{pizza.title}</Title>
                             <img  src={pizza.image}/>
-                            <p>{pizza.price}</p>
+                            <p>R$ {pizza.price}</p>
+                            
+                            <div>
+                                <Plus 
+                                    size={22}
+                                    weight='bold'
+                                    onClick={()=>handleAddToCart(pizza.id)}
+                                />
 
-                            <h3>
-                                 {shoppingCart.find((item) => pizza.id === item.product.id)?.quantity
-                                ? shoppingCart.find((item) => pizza.id === item.product.id)?.quantity
-                                : 0}
-                            </h3>
+                                <h3>
+                                    {shoppingCart.find((item) => pizza.id === item.product.id)?.quantity
+                                    ? shoppingCart.find((item) => pizza.id === item.product.id)?.quantity
+                                    : 0}
+                                </h3>
 
-                            <button 
-                                onClick={()=>handleAddToCart(pizza.id)}
-                            >
-                                +
-                            </button>
+                                <Minus 
+                                    size={22}
+                                    weight='bold'
+                                    onClick={()=>handleRemoveFromCart(pizza.id)}
+                                />
+                            </div>
+                           
 
-                            <button 
-                                onClick={()=>handleRemoveFromCart(pizza.id)}
-                            >
-                                -
-                            </button>
+                            
                         </Product>
                     )
                 })}
@@ -137,18 +146,31 @@ export function Home (){
                 <h1>Seu Carrinho</h1>
                 {shoppingCart.map((item)=>{
                     return(
-                        <div key={item.product.id}>
-                            <p>{item.product.title}</p>
+                        <ProductCart key={item.product.id}>
                             <img src={item.product.image} />
-                            <p>{item.product.price}</p>
-                            <p>{item.quantity}</p>
+                            <Title>{item.product.title}</Title>
+                            <p> R$ {item.product.price}</p>
 
-                            <button onClick={()=>handleRemoveFromCart(item.product.id)}>Remover</button>
-                        </div>
+                            <div>
+                                <Plus 
+                                    size={22}
+                                    weight='bold'
+                                    onClick={()=>handleAddToCart(item.product.id)}
+                                />
+                                <p>{item.quantity}</p>
+
+                                <Minus 
+                                    size={22}
+                                    weight='bold'
+                                    onClick={()=>handleRemoveFromCart(item.product.id)}
+                                />
+                            </div>
+                        
+                        </ProductCart>
                     )
                 })}
 
-                <h1>Preço total: {totalCart}</h1>
+                <h1>Preço total: {totalCart.toFixed(2)}</h1>
             </Cart>
         </Wrapper>
     )
