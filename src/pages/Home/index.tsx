@@ -56,6 +56,36 @@ export function Home (){
     }
 
 
+    //Função remover do carrinho
+
+    function handleRemoveFromCart(id: number){
+        //Verificar se está no carrinho
+
+        const alreadyInShoppingCart = shoppingCart.find((item) => item.product.id === id)
+
+        //Se estiver, remover a quantidade 
+
+        if(alreadyInShoppingCart!.quantity > 1){
+            const newShoppingCart:CarItem[] = shoppingCart.map((item) =>{
+                if(item.product.id === id)
+                ({
+                    ...item,
+                    quantity: item.quantity--
+                })
+                return item;
+            })
+
+            setShoppingCart(newShoppingCart)
+            return;
+        }
+
+        const newShoppingCart: CarItem[] = shoppingCart.filter((item) => item.product.id !== id);
+
+        setShoppingCart(newShoppingCart)
+
+    }
+
+
 
 
 
@@ -91,6 +121,8 @@ export function Home (){
                             <img src={item.product.image} />
                             <p>{item.product.price}</p>
                             <p>{item.quantity}</p>
+
+                            <button onClick={()=>handleRemoveFromCart(item.product.id)}>Remover</button>
                         </div>
                     )
                 })}
