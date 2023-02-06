@@ -1,4 +1,4 @@
-import {Minus, Plus} from 'phosphor-react'
+import {ArrowFatLinesDown, ArrowFatLinesUp, Minus, Plus} from 'phosphor-react'
 
 
 import {
@@ -7,7 +7,9 @@ import {
     Product,
     Cart,
     ProductCart,
-    Title
+    Title,
+    Info,
+    Quantity
 
 } from "./styled"
 
@@ -105,34 +107,45 @@ export function Home (){
     
     return(
         <Wrapper>
-             
             <CardContainer>
+                <div>
+                    <h1>Lista de Produtos</h1>
+                </div>
+
                 {Pizzas.map((pizza) =>{
                     return(
                         <Product key={pizza.id}>
-                            
-                            <Title>{pizza.title}</Title>
                             <img  src={pizza.image}/>
-                            <p>R$ {pizza.price}</p>
+
+                            <Info>
+                                <p>{pizza.title}</p>
+                                <p>{pizza.description}</p>
+                            </Info>
+                            
+                            <span>R$ {pizza.price}</span>
                             
                             <div>
-                                <Plus 
-                                    size={22}
-                                    weight='bold'
-                                    onClick={()=>handleAddToCart(pizza.id)}
-                                />
-
                                 <h3>
                                     {shoppingCart.find((item) => pizza.id === item.product.id)?.quantity
                                     ? shoppingCart.find((item) => pizza.id === item.product.id)?.quantity
                                     : 0}
                                 </h3>
-
-                                <Minus 
-                                    size={22}
-                                    weight='bold'
-                                    onClick={()=>handleRemoveFromCart(pizza.id)}
-                                />
+                                
+                                <Quantity>
+                                    <ArrowFatLinesUp 
+                                        size={12}
+                                        weight='fill'
+                                        color='black'
+                                        onClick={()=>handleAddToCart(pizza.id)}
+                                    /> 
+                                     <ArrowFatLinesDown 
+                                        size={12}
+                                        weight='fill'
+                                        color='black'
+                                        onClick={()=>handleRemoveFromCart(pizza.id)}
+                                    />       
+                                </Quantity>
+                               
                             </div>
                            
 
@@ -152,7 +165,7 @@ export function Home (){
                             <p> R$ {item.product.price}</p>
 
                             <div>
-                                <Plus 
+                                <ArrowFatLinesUp 
                                     size={22}
                                     weight='bold'
                                     onClick={()=>handleAddToCart(item.product.id)}
