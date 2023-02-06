@@ -86,6 +86,11 @@ export function Home (){
     }
 
 
+    //Calcular o preço total
+
+    const totalCart = shoppingCart.reduce((total, current) =>{
+        return total + current.product.price * current.quantity
+    }, 0)
 
 
 
@@ -126,6 +131,8 @@ export function Home (){
                         </div>
                     )
                 })}
+
+                <h1>Preço total: {totalCart}</h1>
             </Cart>
         </Wrapper>
     )
