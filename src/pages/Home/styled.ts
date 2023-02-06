@@ -107,9 +107,7 @@ export const Info = styled.section`
         font-weight: 500;
         font-size: 14px;
         line-height: 19px;
-        /* identical to box height */
-
-
+      
         color: #1E1E1E;
     }
   
@@ -135,12 +133,18 @@ export const Quantity = styled.div`
 export const Cart = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 1rem;
 
     width: 40%;
-    height: auto;
+    height: 450px;
+
+    padding: 2rem;
+
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
 
     
 `
@@ -150,34 +154,45 @@ export const Cart = styled.div`
 
 export const ProductCart = styled.div`
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 5px;
-    
+    gap: 1rem;
+
+
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+    padding: 1rem;
+
+    width: 400px;
+    height: 100px;
 
     img{
-        height: 40px;
-        width: 40px;
+        width: 60px;
+        height: 60px;
     }
 
-    
+    span{
+        color: red;
+        font-weight: bold;
+    }
 
 
     div{
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 4px;
+        gap: 2px;
 
-        background-color: ${(props) => props.theme['base-button']};
+       
 
         svg{
-            background-color: ${(props) => props.theme['base-button']};
-            color: ${(props) => props.theme['purple']};
-            padding: 2px;
-
             cursor: pointer;
         }
     }
+
+
 
 
 `

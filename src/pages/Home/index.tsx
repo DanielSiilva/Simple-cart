@@ -156,32 +156,44 @@ export function Home (){
             </CardContainer>
             
             <Cart>
-                <h1>Seu Carrinho</h1>
-                {shoppingCart.map((item)=>{
-                    return(
-                        <ProductCart key={item.product.id}>
-                            <img src={item.product.image} />
-                            <Title>{item.product.title}</Title>
-                            <p> R$ {item.product.price}</p>
+                <div>
+                    <h1>Itens no carrinho</h1>
+                </div>
+                
+                {shoppingCart.length > 0 ? 
+                
+                    shoppingCart.map((item)=>{
+                        return (
+                            <ProductCart key={item.product.id}>
+                                <img src={item.product.image} />
+                                <Title>{item.product.title}</Title>
+                                <p> R$ {item.product.price}</p>
 
-                            <div>
-                                <ArrowFatLinesUp 
-                                    size={22}
-                                    weight='bold'
-                                    onClick={()=>handleAddToCart(item.product.id)}
-                                />
-                                <p>{item.quantity}</p>
+                                <div>
+                                    <ArrowFatLinesUp 
+                                            size={12}
+                                            weight='fill'
+                                            color='black'
+                                            onClick={()=>handleAddToCart(item.product.id)}
+                                        /> 
+                                    <p>{item.quantity}</p>
 
-                                <Minus 
-                                    size={22}
-                                    weight='bold'
-                                    onClick={()=>handleRemoveFromCart(item.product.id)}
-                                />
-                            </div>
+                                    <ArrowFatLinesDown 
+                                            size={12}
+                                            weight='fill'
+                                            color='black'
+                                            onClick={()=>handleRemoveFromCart(item.product.id)}
+                                    /> 
+                                </div>
                         
-                        </ProductCart>
-                    )
-                })}
+                            </ProductCart>
+                        )
+                    })
+                    
+                    :
+                    
+                    <p> Carrinho vazio</p>
+                }
 
                 <h1>Preço total: {totalCart.toFixed(2)}</h1>
             </Cart>
